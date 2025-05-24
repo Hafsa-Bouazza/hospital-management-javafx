@@ -1,0 +1,63 @@
+CREATE TABLE utilisateur (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  prenom VARCHAR(100),
+  email VARCHAR(100),
+  motdepasse VARCHAR(100),
+  role VARCHAR(100)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE medecin (
+  id INT NOT NULL,
+  specialite VARCHAR(100),
+  FOREIGN KEY (id) REFERENCES utilisateur(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE infirmier (
+  id INT NOT NULL,
+  tache VARCHAR(100),
+  FOREIGN KEY (id) REFERENCES utilisateur(id) ON DELETE CASCADE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE secretaire (
+  id INT NOT NULL,
+  service VARCHAR(100),
+  FOREIGN KEY (id) REFERENCES utilisateur(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE medicament (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  forme VARCHAR(100),
+  dosage VARCHAR(100),
+  effetSecondaires TEXT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE patient (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  prenom VARCHAR(100),
+  dateNaissance DATE,
+  sexe VARCHAR(100),
+  telephone VARCHAR(100),
+  numeroDossier VARCHAR(100) UNIQUE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE traitement (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  idPatient INT NOT NULL,
+  idMedecin INT DEFAULT NULL,
+  idMedicament INT DEFAULT NULL,
+  posologie VARCHAR(100),
+  dateDebut DATE,
+  dateFin DATE,
+  instructions TEXT,
+  enCours TINYINT(1),
+  FOREIGN KEY (idPatient) REFERENCES patient(id) ON DELETE CASCADE,
+  FOREIGN KEY (idMedecin) REFERENCES medecin(id) ON DELETE SET NULL,
+  FOREIGN KEY (idMedicament) REFERENCES medicament(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
