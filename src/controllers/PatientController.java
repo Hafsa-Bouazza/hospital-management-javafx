@@ -49,14 +49,14 @@ public class PatientController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            patientDAO = new PatientDAO(); // 👉 instanciation ici d'abord
+            patientDAO = new PatientDAO(); 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         setupGenreCombo();
         setupTable();
-        loadPatients(); // 👉 ensuite seulement on peut l'utiliser
+        loadPatients(); 
     }
 
     private void setupTable() {
