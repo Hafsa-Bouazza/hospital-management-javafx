@@ -1,0 +1,84 @@
+/* Table Header Styles */
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #035D64; /* Dark teal */
+}
+
+.table-view .column-header-background {
+    -fx-background-radius: 5pt 5pt 0 0;
+    -fx-background-color: #035D64;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5px 0;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Table Cell Styles */
+.table-view .cell {
+    -fx-cell-size: 35;
+    -fx-alignment: center-left;
+    -fx-background-color: #adddcb; /* Light teal */
+    -fx-border-color: transparent;
+    -fx-text-fill: #29292D; /* Dark gray */
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Selected Row Style */
+.table-row-cell:selected {
+    -fx-background-color: #035D64;
+    -fx-text-background-color: white;
+}
+
+/* Table View Container */
+.table-view {
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5pt;
+    -fx-background-radius: 5pt;
+    -fx-background-color: transparent;
+}
+
+/* Scroll Bar Styles */
+.table-view .increment-button,
+.table-view .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 2em;
+}
+
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: derive(#035D64, 20%);
+    -fx-background-radius: 2em;
+    -fx-border-radius: 2em;
+}
+
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: derive(#035D64, 30%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+/* Hover Effects */
+.table-row-cell:hover {
+    -fx-background-color: derive(#adddcb, -10%);
+}
+
+.table-row-cell:filled:selected:hover {
+    -fx-background-color: derive(#035D64, -10%);
+}
+
+/* Alternating Row Colors */
+.table-row-cell:even {
+    -fx-background-color: derive(#adddcb, 5%);
+}
+
+.table-row-cell:odd {
+    -fx-background-color: derive(#adddcb, -5%);
+}

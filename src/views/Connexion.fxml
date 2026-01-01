@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,44 +12,62 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #217e82;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #035D64;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ConnexionController">
    <children>
-      <VBox fx:id="loginBox" alignment="TOP_CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0" style="-fx-background-color: b4dbd2;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <VBox fx:id="loginBox" alignment="TOP_CENTER" layoutX="29.0" layoutY="51.0" prefHeight="507.0" prefWidth="921.0" spacing="15.0" style="-fx-background-color: #d3eef5; -fx-background-radius: 10;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label fx:id="labelConnexion" alignment="TOP_CENTER" prefHeight="31.0" prefWidth="113.0" text="Connexion" textAlignment="CENTER" textFill="#217e82" underline="true">
+            <ImageView fitHeight="143.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label fx:id="labelConnexion" alignment="TOP_CENTER" prefHeight="31.0" prefWidth="113.0" text="Connexion" textAlignment="CENTER" textFill="#035d64" underline="true">
                <font>
                   <Font name="Bell MT Bold" size="24.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" top="20.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="subtitleLabel" text="Connectez-vous pour continuer" textAlignment="CENTER" textFill="#a89898">
                <font>
                   <Font name="Bell MT" size="16.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="-20.0" />
+               </VBox.margin>
             </Label>
-            <TextField fx:id="usernamefield" prefHeight="40.0" prefWidth="300.0" promptText=" Identifiant ou adresse E-mail" />
-            <TextField fx:id="passwordField" prefHeight="38.0" prefWidth="560.0" promptText="Mot de passe">
-               <font>
-                  <Font name="Arial Unicode MS" size="12.0" />
-               </font>
-            </TextField>
-            <Button fx:id="SeconnecterBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: #217e82;" text="Se connecter" textFill="#c9ac5a">
+            <TextField fx:id="usernamefield" prefHeight="35.0" prefWidth="340.0" promptText=" Identifiant ou adresse E-mail">
+               <VBox.margin>
+                  <Insets left="250.0" right="250.0" />
+               </VBox.margin></TextField>
+            <PasswordField fx:id="passwordField" prefHeight="40.0" prefWidth="381.0" promptText="Mot de passe">
+               <VBox.margin>
+                  <Insets left="250.0" right="250.0" />
+               </VBox.margin></PasswordField>
+            <Button fx:id="SeconnecterBtn" alignment="CENTER" mnemonicParsing="false" onAction="#handleConnexion" prefHeight="48.0" prefWidth="199.0" style="-fx-background-color: #035D64;" text="Se connecter" textFill="#c9ac5a">
                <font>
                   <Font name="Bell MT Bold" size="18.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
             </Button>
+            <Label fx:id="errorLabel" style="-fx-font-weight: bold;" text="" textFill="red">
+               <VBox.margin>
+                  <Insets bottom="0" left="250" right="250" top="0" />
+               </VBox.margin>
+            </Label>
             <Hyperlink fx:id="passwordLink" text="Mot de passe oublié?" textFill="#0c455e" underline="true" />
+            <Hyperlink fx:id="Inscription" alignment="CENTER" layoutX="300" layoutY="460" onAction="#handleCreerCompte" prefWidth="200" style="-fx-text-fill: #004d4d; -fx-font-size: 12px;" text="Créer un compte" underline="true" />
+
          </children>
          <padding>
             <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
          </padding>
       </VBox>
-      <ImageView fitHeight="85.0" fitWidth="107.0" layoutX="60.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/14-removebg-preview.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

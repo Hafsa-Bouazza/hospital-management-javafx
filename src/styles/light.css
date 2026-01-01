@@ -1,0 +1,56 @@
+.root {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.label, .text, .text-area, .table-cell {
+    -fx-text-fill: black;
+}
+
+.button, .toggle-button {
+    -fx-background-color: #f4f4f4;
+    -fx-text-fill: black;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.button:hover, .toggle-button:hover {
+    -fx-background-color: #e0e0e0;
+}
+
+.text-field, .password-field, .text-area {
+    -fx-control-inner-background: white;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 3;
+}
+
+.combo-box {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-border-color: #cccccc;
+}
+
+.table-view {
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #dddddd;
+    -fx-text-fill: black;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: black;
+}
+
+.table-row-cell:filled:selected, .table-cell:filled:selected {
+    -fx-background-color: #b0b0b0;
+    -fx-text-fill: black;
+}
+
+.tab-pane, .tab {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}

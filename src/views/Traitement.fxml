@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TraitementController">
+
+    <!-- Top Header -->
+    <top>
+        <HBox alignment="CENTER" prefHeight="100" style="-fx-background-color: linear-gradient(to right, #035D64, #028f9b); -fx-padding: 15 30;">
+            <HBox alignment="CENTER_LEFT" spacing="15">
+                <ImageView fx:id="logoImage" fitHeight="70" fitWidth="78" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icon.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="titleLabel" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22;" text="Gestion des Traitements" />
+            </HBox>
+            <Region HBox.hgrow="ALWAYS" />
+        </HBox>
+    </top>
+
+    <!-- Center Content -->
+    <center>
+        <TabPane fx:id="mainTabPane">
+            <Tab fx:id="listTab" text="Liste des Traitements">
+                <VBox spacing="20" style="-fx-padding: 20;">
+                    <TableView fx:id="traitementTable" stylesheets="@../styles/table.css">
+                        <columns>
+                            <TableColumn fx:id="idCol" prefWidth="80" text="ID" />
+                            <TableColumn fx:id="patientCol" prefWidth="120" text="Nom complet" />
+                            <TableColumn fx:id="medecinCol" prefWidth="120" text="Médecin" />
+                            <TableColumn fx:id="medicamentCol" prefWidth="150" text="Médicament" />
+                            <TableColumn fx:id="posologieCol" prefWidth="120" text="Posologie" />
+                            <TableColumn fx:id="dateDebutCol" prefWidth="100" text="Date Début" />
+                            <TableColumn fx:id="dateFinCol" prefWidth="100" text="Date Fin" />
+                            <TableColumn fx:id="statutCol" prefWidth="80" text="Statut" />
+                            <TableColumn fx:id="optionsCol" prefWidth="100.0" text="Actions" />
+                        </columns>
+                    </TableView>
+
+                    <HBox alignment="CENTER_LEFT" spacing="15">
+                        <Button fx:id="btnNouveauTraitement" onAction="#handleNouveauTraitement" style="-fx-background-color: #035D64; -fx-text-fill: white;" text="Nouveau Traitement">
+                            <graphic>
+                                <ImageView fitHeight="16" fitWidth="16">
+                                    <Image url="@../ressources/images/add-icon.png" />
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </HBox>
+                </VBox>
+            </Tab>
+
+            <Tab fx:id="formTab" text="Formulaire de Traitement">
+                <ScrollPane fx:id="formScrollPane" fitToWidth="true">
+                    <GridPane fx:id="formGrid" hgap="10" style="-fx-padding: 20;" vgap="10">
+                        <!-- Colonne de gauche -->
+                        <Label text="Nom complet:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <TextField fx:id="nomCompletField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                        <Label text="Médecin :" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <TextField fx:id="medecinField" promptText="Entrez le nom du médecin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="Médicament :" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <TextField fx:id="medicamentField" promptText="ex : doliprane" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <Label text="Posologie :" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <TextField fx:id="posologieField" promptText="ex : 2 comprimés/jour" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                        <!-- Colonne de droite -->
+                        <Label text="Date début :" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                        <DatePicker fx:id="dateDebutPicker" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+
+                        <Label text="Date fin :" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dateFinPicker" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+
+                        <Label text="Instructions :" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextArea fx:id="instructionsArea" prefRowCount="3" promptText="prendre après repas" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+
+                        <CheckBox fx:id="enCoursCheck" text="Traitement en cours" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+
+                        <!-- Boutons -->
+                        <HBox fx:id="formButtonsContainer" alignment="CENTER" spacing="20" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                            <Button fx:id="btnEnregistrer" onAction="#handleEnregistrerTraitement" style="-fx-background-color: #035D64; -fx-text-fill: white;" text="Enregistrer" />
+                            <Button fx:id="btnAnnuler" onAction="#handleAnnulerFormulaire" style="-fx-background-color: #035D64; -fx-text-fill: white;" text="Annuler" />
+                        </HBox>
+
+                        <columnConstraints>
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                            <ColumnConstraints />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+                    </GridPane>
+                </ScrollPane>
+            </Tab>
+        </TabPane>
+    </center>
+
+    <!-- Bottom Navigation -->
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="68" spacing="40" style="-fx-background-color: #035D64;">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="10" />
+            </padding>
+
+            <Button fx:id="btnAccueil" onAction="#goAccueil" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Accueil" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                        <image>
+                            <Image url="@../images/3.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnPatients" onAction="#goPatients" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Patients" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                        <image>
+                            <Image url="@../images/pat.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnTraitements" onAction="#goTraitements" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Traitements" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="44.0">
+                        <image>
+                            <Image url="@../images/TraitO.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnStats" onAction="#goStats" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Statistiques" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                        <image>
+                            <Image url="@../images/stats.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnRendezVous" onAction="#goRendezVous" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Rendez-vous" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                        <image>
+                            <Image url="@../images/Design%20sans%20titre%20(4).png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+
+            <Button fx:id="btnParametres" onAction="#goParametres" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Paramètres" textFill="WHITE">
+                <graphic>
+                    <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                        <image>
+                            <Image url="@../images/par.png" />
+                        </image>
+                    </ImageView>
+                </graphic>
+                <font>
+                    <Font name="Bookman Old Style Bold" size="11" />
+                </font>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>

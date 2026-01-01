@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="1100.0" style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ParametresController">
+
+    <!-- ========== EN-TÊTE ========== -->
+    <top>
+        <HBox fx:id="headerContainer" alignment="CENTER" prefHeight="100.0" prefWidth="1100.0" spacing="20" style="-fx-background-color: linear-gradient(to right, #035D64, #028f9b); -fx-padding: 15 30;">
+            <HBox fx:id="logoContainer" alignment="CENTER_LEFT" spacing="15">
+                <ImageView fx:id="logoImage" fitHeight="70.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/5.png" />
+                    </image>
+                </ImageView>
+                <Label fx:id="titleLabel" style="-fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 22;" text="Paramètres">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                </Label>
+            </HBox>
+            <Region fx:id="spacerRegion" HBox.hgrow="ALWAYS" />
+            <ToggleButton fx:id="themeToggleBtn" onAction="#handleThemeToggle" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-radius: 20; -fx-padding: 8 15;">
+                <graphic>
+                    <HBox fx:id="themeToggleContainer" alignment="CENTER" spacing="8">
+                        <SVGPath fx:id="themeIcon" content="M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36c-0.98,1.37-2.58,2.26-4.4,2.26 c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z" fill="white" />
+                        <Label fx:id="themeLabel" style="-fx-text-fill: white; -fx-font-size: 14;" text="Mode Sombre" />
+                    </HBox>
+                </graphic>
+                <tooltip>
+                    <Tooltip fx:id="themeTooltip" text="Basculer entre le mode clair et sombre" />
+                </tooltip>
+            </ToggleButton>
+        </HBox>
+    </top>
+
+    <!-- ========== CONTENU PRINCIPAL ========== -->
+    <center>
+        <ScrollPane fx:id="contentScrollPane" fitToWidth="true" style="-fx-background: #f5f7fa; -fx-border-color: transparent;">
+            <VBox fx:id="mainContentContainer" alignment="TOP_CENTER" spacing="25" style="-fx-padding: 30;">
+                <!-- Carte Profil -->
+                <VBox fx:id="profileCard" alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 15, 0, 0, 5); -fx-padding: 25;">
+                    <HBox fx:id="profileInfoContainer" alignment="CENTER" spacing="20">
+                        <StackPane fx:id="avatarContainer">
+                            <Circle fx:id="avatarCircle" fill="WHITE" radius="32.0" stroke="#035D64" strokeWidth="2" />
+                            <ImageView fx:id="avatarImage" fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/c.png" />
+                                </image>
+                            </ImageView>
+                        </StackPane>
+                        <VBox fx:id="profileInfoText" alignment="CENTER_LEFT" spacing="5">
+                            <Label fx:id="userNameLabel" style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: #035D64;" />
+                            <Label fx:id="userRoleLabel" style="-fx-text-fill: #666; -fx-font-size: 14;" text="Médecin Généraliste" />
+                            <Label fx:id="userEmailLabel" style="-fx-text-fill: #888; -fx-font-size: 13;" />
+                        </VBox>
+                    </HBox>
+                    <Button fx:id="editProfileBtn" onAction="#handleEditProfile" style="-fx-background-color: #035D64; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: bold;" text="Modifier le profil" />
+                </VBox>
+
+                <!-- Grille des Paramètres -->
+                <GridPane fx:id="settingsGrid" hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="350" prefWidth="350" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="350" prefWidth="350" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+
+                    <!-- Ligne 1 -->
+                    <VBox fx:id="accountSettingsCard" alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-padding: 20;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                        <ImageView fx:id="accountSettingsIcon" fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@../images/17.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="accountSettingsTitle" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #035D64;" text="Compte" />
+                        <Label fx:id="accountSettingsDesc" style="-fx-text-fill: #666; -fx-font-size: 13;" text="Gérer les paramètres de votre compte" />
+                        <Button fx:id="manageAccountBtn" onAction="#handleManageAccount" style="-fx-background-color: #e3f2fd; -fx-background-radius: 6; -fx-text-fill: #035D64; -fx-font-weight: bold;" text="Gérer" />
+                    </VBox>
+
+                    <VBox fx:id="securitySettingsCard" alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-padding: 20;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                        <ImageView fx:id="securitySettingsIcon" fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@../images/8.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="securitySettingsTitle" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #035D64;" text="Sécurité" />
+                        <Label fx:id="securitySettingsDesc" style="-fx-text-fill: #666; -fx-font-size: 13;" text="Modifier mot de passe et sécurité" />
+                        <Button fx:id="changePasswordBtn" onAction="#handleChangePassword" style="-fx-background-color: #e3f2fd; -fx-background-radius: 6; -fx-text-fill: #035D64; -fx-font-weight: bold;" text="Modifier" />
+                    </VBox>
+
+                    <!-- Ligne 2 -->
+                    <VBox fx:id="notificationsSettingsCard" alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-padding: 20;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                        <ImageView fx:id="notificationsSettingsIcon" fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@../images/9.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="notificationsSettingsTitle" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #035D64;" text="Notifications" />
+                        <Label fx:id="notificationsSettingsDesc" style="-fx-text-fill: #666; -fx-font-size: 13;" text="Configurer les préférences de notifications" />
+                        <Button fx:id="configureNotificationsBtn" onAction="#handleConfigureNotifications" style="-fx-background-color: #e3f2fd; -fx-background-radius: 6; -fx-text-fill: #035D64; -fx-font-weight: bold;" text="Configurer" />
+                    </VBox>
+
+                    <VBox fx:id="languageSettingsCard" alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0, 0, 3); -fx-padding: 20;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ImageView fx:id="languageSettingsIcon" fitHeight="50.0" fitWidth="50.0">
+                            <image>
+                                <Image url="@../images/10.png" />
+                            </image>
+                        </ImageView>
+                        <Label fx:id="languageSettingsTitle" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-text-fill: #035D64;" text="Langue" />
+                        <Label fx:id="languageSettingsDesc" style="-fx-text-fill: #666; -fx-font-size: 13;" text="Changer la langue de l'application" />
+                        <ComboBox fx:id="languageComboBox" onAction="#handleLanguageChange" style="-fx-background-color: #e3f2fd; -fx-background-radius: 6;" />
+                    </VBox>
+                </GridPane>
+
+                <!-- Actions Secondaires -->
+                <VBox fx:id="secondaryActionsContainer" alignment="CENTER" spacing="15">
+                    <Button fx:id="logoutBtn" onAction="#handleLogout" style="-fx-background-color: #035D64; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: bold;" text="Déconnexion" />
+                    <Label fx:id="versionLabel" style="-fx-text-fill: #888; -fx-font-size: 12;" text="Version 1.0.0 © 2023" />
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+   <bottom>
+      <HBox fx:id="bottomNavBar" alignment="CENTER" prefHeight="68.0" spacing="40.0" style="-fx-background-color: #035D64;" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+         <children>
+            <Button fx:id="btnAccueil" contentDisplay="TOP" onAction="#handleAccueil" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Accueil" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/3.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPatients" contentDisplay="TOP" onAction="#handlePatients" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Patients" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnTraitements" contentDisplay="TOP" onAction="#handleTraitements" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Traitements" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/trait-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnStats" contentDisplay="TOP" onAction="#handleStats" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Statistiques" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/stats.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRdv" contentDisplay="TOP" onAction="#handleRdv" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Rendez-Vous" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Design%20sans%20titre%20(4).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnParametres" contentDisplay="TOP" onAction="#handleParametres" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Paramètres" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="32.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/5.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Bookman Old Style Bold" size="11.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

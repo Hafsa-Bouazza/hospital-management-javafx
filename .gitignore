@@ -3,3 +3,19 @@ build/
 dist/
 *.class
 *.jar
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+build/
+
+# IntelliJ
+*.iml
+.idea/
+
+# Compiled files
+out/
+*.class
+
+# OS
+.DS_Store

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f5f7fa;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StatistiquesController">
+
+    <!-- Haut : En-tête -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="80.0" style="-fx-background-color: #035D64; -fx-padding: 0 20;">
+            <children>
+                <ImageView fitHeight="71.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icon.png" />
+                    </image>
+                </ImageView>
+                <Label style="-fx-font-weight: bold;" text="Statistiques des Patients" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20" />
+                    </HBox.margin>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Centre : Statistiques et graphique -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 20;">
+
+            <!-- Indicateurs statistiques -->
+            <HBox alignment="CENTER" spacing="30">
+
+                <!-- Total Patients -->
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                    <Label style="-fx-text-fill: #666;" text="Patients Totaux">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="totalPatientsLabel" style="-fx-text-fill: #035D64; -fx-font-weight: bold;">
+                        <font>
+                            <Font size="28.0" />
+                        </font>
+                    </Label>
+                </VBox>
+
+                <!-- Mois le plus chargé -->
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                    <Label style="-fx-text-fill: #666;" text="Mois le plus chargé">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="moisChargeLabel" style="-fx-text-fill: #035D64; -fx-font-weight: bold;">
+                        <font>
+                            <Font size="28.0" />
+                        </font>
+                    </Label>
+                </VBox>
+
+                <!-- Moyenne mensuelle -->
+                <VBox alignment="CENTER" spacing="5" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                    <Label style="-fx-text-fill: #666;" text="Moyenne Mensuelle">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                    <Label fx:id="moyenneMensuelleLabel" style="-fx-text-fill: #035D64; -fx-font-weight: bold;">
+                        <font>
+                            <Font size="28.0" />
+                        </font>
+                    </Label>
+                </VBox>
+            </HBox>
+
+            <!-- Graphique BarChart -->
+            <BarChart fx:id="barChart" legendVisible="false" title="Répartition des Patients par Mois">
+                <xAxis>
+                    <CategoryAxis label="Mois" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Nombre de patients" />
+                </yAxis>
+            </BarChart>
+        </VBox>
+    </center>
+
+    <!-- Bas : Barre de navigation -->
+    <bottom>
+        <HBox fx:id="bottomNavBar" alignment="CENTER" prefHeight="68.0" spacing="40.0" style="-fx-background-color: #035D64;">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="10" />
+            </padding>
+            <children>
+                <!-- Accueil -->
+                <Button fx:id="btnAccueil" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Accueil" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/3.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+
+                <!-- Patients -->
+                <Button fx:id="btnPatients" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Patients" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/pat.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+
+                <!-- Traitements -->
+                <Button fx:id="btnTraitements" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Traitements" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/trait-removebg-preview.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+
+                <!-- Statistiques -->
+                <Button fx:id="btnStats" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Statistiques" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0">
+                            <image>
+                                <Image url="@../images/4.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+
+                <!-- Rendez-vous -->
+                <Button fx:id="btnRdv" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Rendez-Vous" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/Design%20sans%20titre%20(4).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+
+                <!-- Paramètres -->
+                <Button fx:id="btnParametres" contentDisplay="TOP" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Paramètres" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/par.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </bottom>
+
+</BorderPane>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientController">
+
+    <!-- Top Section - Search Bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #035D64; -fx-padding: 10;">
+            <ImageView fitHeight="70" fitWidth="79.0">
+                <image>
+                    <Image url="@../images/icon.png" />
+                </image>
+            </ImageView>
+            <TextField fx:id="searchField" prefHeight="35" prefWidth="400" promptText="Rechercher patients..." />
+            <Button fx:id="searchButton" onAction="#handleSearch" style="-fx-background-color: #eaac35; -fx-text-fill: #035d64;" text="Rechercher" />
+            <Region HBox.hgrow="ALWAYS" />
+        </HBox>
+    </top>
+
+    <!-- Center Section - Table and Form -->
+    <center>
+        <VBox spacing="15" style="-fx-padding: 15;">
+            <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #035D64;" text="Gestion des Patients" />
+
+            <TableView fx:id="patientTable" style="-fx-background-color: #adddcb;" stylesheets="@../styles/table1.css">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="80" text="ID" />
+                    <TableColumn fx:id="nomColumn" prefWidth="150" text="Nom" />
+                    <TableColumn fx:id="prenomColumn" prefWidth="150" text="Prénom" />
+                    <TableColumn fx:id="telephoneColumn" prefWidth="120" text="Téléphone" />
+                    <TableColumn fx:id="genreColumn" prefWidth="100" text="Genre" />
+                    <TableColumn fx:id="emailColumn" prefWidth="200" text="Email" />
+                    <TableColumn fx:id="actionsColumn" prefWidth="200" text="Actions" />
+                </columns>
+            </TableView>
+
+            <HBox style="-fx-padding: 10; -fx-border-color: #035D64; -fx-border-width: 2;">
+                <VBox spacing="10">
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-weight: bold;" text="Nom:" />
+                        <TextField fx:id="nomField" prefWidth="200" promptText="Nom" />
+                        <Label style="-fx-font-weight: bold;" text="Prénom:" />
+                        <TextField fx:id="prenomField" prefWidth="200" promptText="Prénom" />
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-weight: bold;" text="Téléphone:" />
+                        <TextField fx:id="telephoneField" prefWidth="200" promptText="Téléphone" />
+                        <Label style="-fx-font-weight: bold;" text="Genre:" />
+                        <ComboBox fx:id="genreCombo" onAction="#setupGenreCombo" prefWidth="120" />
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="10">
+                        <Label style="-fx-font-weight: bold;" text="Email:" />
+                        <TextField fx:id="emailField" prefWidth="415" promptText="Email" />
+                    </HBox>
+
+                    <Button fx:id="saveButton" onAction="#handleSavePatient" style="-fx-background-color: #035D64; -fx-text-fill: white;" text="Enregistrer" />
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="68" spacing="40" style="-fx-background-color: #035D64;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="10" left="20" right="20" top="10" />
+            </padding>
+            <children>
+                <Button fx:id="btnAccueil1" contentDisplay="TOP" onAction="#goAccueil" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Accueil" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                            <image>
+                                <Image url="@../images/3.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+                <Button fx:id="btnPatients1" contentDisplay="TOP" onAction="#goPatients" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Patients" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32">
+                            <image>
+                                <Image url="@../images/2.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+                <Button fx:id="btnTraitements1" contentDisplay="TOP" onAction="#goTraitements" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Traitements" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="44.0" opacity="0.62">
+                            <image>
+                                <Image url="@../images/trait-removebg-preview.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+                <Button fx:id="btnStats1" contentDisplay="TOP" onAction="#goStats" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Statistiques" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                            <image>
+                                <Image url="@../images/stats.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+                <Button fx:id="btnRendezVous" contentDisplay="TOP" onAction="#goRendezVous" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Rendez-vous" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                            <image>
+                                <Image url="@../images/Design%20sans%20titre%20(4).png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+                <Button fx:id="btnParametres1" contentDisplay="TOP" onAction="#goParametres" prefHeight="68" prefWidth="100" style="-fx-background-color: transparent;" text="Paramètres" textFill="WHITE">
+                    <graphic>
+                        <ImageView fitHeight="32" fitWidth="32" opacity="0.62">
+                            <image>
+                                <Image url="@../images/par.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <font>
+                        <Font name="Bookman Old Style Bold" size="11" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

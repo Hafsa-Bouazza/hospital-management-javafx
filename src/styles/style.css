@@ -1,0 +1,134 @@
+/* ===== STYLE GENERAL DE LA TABLEVIEW ===== */
+.table-view {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);
+    -fx-padding: 0;
+}
+
+/* ===== STYLE DES EN-TETES DE COLONNE ===== */
+.table-view .column-header-background {
+    -fx-background-color: #035D64;
+    -fx-background-radius: 10 10 0 0;
+    -fx-background-insets: 0;
+    -fx-padding: 5 0 5 0;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-background-color: transparent;
+    -fx-size: 40px;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "Bookman Old Style";
+    -fx-font-size: 14px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 0 0 10;
+}
+
+/* ===== STYLE DES CELLULES ===== */
+.table-view .table-cell {
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-family: "Bell MT";
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 0 10 10;
+    -fx-border-color: transparent;
+}
+
+/* ===== STYLE DES LIGNES ===== */
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-cell-size: 40px;
+}
+
+/* Lignes paires */
+.table-row-cell:even {
+    -fx-background-color: #f8f8f8;
+}
+
+/* Lignes impaires */
+.table-row-cell:odd {
+    -fx-background-color: white;
+}
+
+/* Ligne survolée */
+.table-row-cell:hover {
+    -fx-background-color: #e6f3f2;
+}
+
+/* Ligne sélectionnée */
+.table-row-cell:selected,
+.table-row-cell:selected:hover {
+    -fx-background-color: #037973;
+    -fx-text-background-color: white;
+}
+
+/* ===== STYLE DE LA BARRE DE DEFILEMENT ===== */
+.table-view .scroll-bar:horizontal,
+.table-view .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: #035D64;
+    -fx-background-radius: 5;
+}
+
+/* ===== STYLE DES BOUTONS D'ACTION ===== */
+.action-button {
+    -fx-background-radius: 5;
+    -fx-padding: 5 10;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.edit-button {
+    -fx-background-color: #037973;
+    -fx-text-fill: white;
+}
+
+.edit-button:hover {
+    -fx-background-color: #026b66;
+}
+
+.delete-button {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+
+.delete-button:hover {
+    -fx-background-color: #c0392b;
+}
+
+/* ===== STYLE DU PLACEHOLDER (TABLE VIDE) ===== */
+.table-view .placeholder .label {
+    -fx-text-fill: #666666;
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-alignment: CENTER;
+}
+
+/* ===== STYLE DE LA COLONNE D'ACTIONS ===== */
+.actions-column {
+    -fx-alignment: CENTER;
+}
+
+.actions-container {
+    -fx-spacing: 5;
+    -fx-alignment: CENTER;
+}
